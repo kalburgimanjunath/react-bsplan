@@ -1,0 +1,29 @@
+.container {
+  /* flex: 1; */
+  /* display: 'flex'; */
+}
+.container div {
+  /* flex: 1; */
+  /* display: flex; */
+  justify-content: space-around;
+}
+.container div label {
+  display: block;
+  font-weight: bold;
+}
+.container div textarea {
+  width: 100%;
+  max-height: 30%;
+  min-height: 150px;
+}
+.main {
+  /* display: flex; */
+  flex: 1;
+  border: 1px solid #d8d8d8;
+  box-shadow: inset 1px 5px 1px -3px 0;
+  padding: 24px;
+}
+.main ol {
+  margin: 0;
+  padding: 0;
+}
