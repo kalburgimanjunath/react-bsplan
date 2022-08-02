@@ -55,11 +55,15 @@ export default function App() {
             )}
           </li>
           <li>
-            <ProposedSolution />
+            {records && records.ExistingAlternatives ? (
+              <ExistingAlternatives
+                ExistingAlternatives={records.ExistingAlternatives}
+              />
+            ) : (
+              <div>Loading...</div>
+            )}
           </li>
-          <li>
-            <ExistingAlternatives />
-          </li>
+
           <li>
             <UniqueValue />
           </li>
