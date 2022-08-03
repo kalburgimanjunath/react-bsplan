@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
-import axios from 'axios';
+// import axios from 'axios';
 
 const postData = async (ProblemStatement) => {
   let headers = new Headers();
@@ -20,22 +20,22 @@ const postData = async (ProblemStatement) => {
       }),
     }
   );
-  axios
-    .post(
-      'https://api.airtable.com/v0/appE590l4XAEEfNUQ/PlanTable',
-      {
-        fields: {
-          ProblemStatement: ProblemStatement,
-        },
-      },
-      { headers: headers }
-    )
-    .then((resp) => {
-      console.log('success!');
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
+  // axios
+  //   .post(
+  //     'https://api.airtable.com/v0/appE590l4XAEEfNUQ/PlanTable',
+  //     {
+  //       fields: {
+  //         ProblemStatement: ProblemStatement,
+  //       },
+  //     },
+  //     { headers: headers }
+  //   )
+  //   .then((resp) => {
+  //     console.log('success!');
+  //   })
+  //   .catch(function (error) {
+  //     console.log(error);
+  //   });
 };
 export default function ProblemStatement({ ProblemStatement }) {
   return (
