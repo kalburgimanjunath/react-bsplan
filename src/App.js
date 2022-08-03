@@ -18,6 +18,9 @@ export default function App() {
     WebMatrix: ' ',
   };
   useEffect(() => {
+    setTimeout(fetchData, 1000);
+  }, [records]);
+  const fetchData = () => {
     fetch(
       'https://api.airtable.com/v0/appE590l4XAEEfNUQ/PlanTable?api_key=keyeNXyxxuuYJY19w'
     )
@@ -36,13 +39,12 @@ export default function App() {
         };
         setRecords(user);
       });
-  }, [records]);
-
+  };
   return (
     <div className="container">
       <Routes>
         <Route
-          path="./addplan"
+          path="/addplan"
           element={<AddPlan records={empty} />}
           exact
         ></Route>

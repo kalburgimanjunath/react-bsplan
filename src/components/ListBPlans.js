@@ -42,7 +42,11 @@ export default function ListBPlans({ records }) {
               </td>
             </tr>
           ) : (
-            <div>Loading...</div>
+            <tr>
+              <td>
+                <div>Loading...</div>
+              </td>
+            </tr>
           )}
         </tbody>
       </table>

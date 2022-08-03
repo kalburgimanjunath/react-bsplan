@@ -11,8 +11,7 @@ export default function ViewPlan({ records }) {
     borderContainer: {
       border: '1px solid #d6d6d6',
       width: '100%',
-      textAlign: 'center',
-      padding: 10,
+      margin: 10,
     },
     noborder: {
       border: 0,
@@ -22,20 +21,54 @@ export default function ViewPlan({ records }) {
     },
     container: {
       border: '1px solid #d6d6d6',
+      margin: 24,
+    },
+    text_color1: {
+      color: '#DADDD8',
+    },
+    text_color2: {
+      color: '#c7d59f',
+    },
+    text_color3: {
+      color: '#b7ce63',
+    },
+    text_color4: {
+      color: '#8fb339',
+    },
+    text_color5: {
+      color: '#4b5842',
+    },
+    color1: {
+      backgroundColor: '#DADDD8',
+    },
+    color2: {
+      backgroundColor: '#c7d59f',
+    },
+    color3: {
+      backgroundColor: '#b7ce63',
+    },
+    color4: {
+      backgroundColor: '#8fb339',
+    },
+    color5: {
+      backgroundColor: '#4b5842',
     },
   };
+
   return (
     <div>
       {records ? (
-        <>
+        <div>
+          <Link to="../">Back to List</Link>
           <h1>View Business Plans: {records.ProblemStatement}</h1>
+          <Link to="../editplan">Edit</Link>
           <div style={styles.container} ref={componentRef}>
-            <div style={{ display: 'flex' }}>
-              <div style={styles.borderContainer}>
+            <div style={{ display: 'flex', alignItems: 'inherit' }}>
+              <div style={(styles.borderContainer, styles.color1)}>
                 <h5 style={styles.columnhead}>ProblemStatement</h5>
                 {records.ProblemStatement}
               </div>
-              <div style={styles.borderContainer}>
+              <div style={(styles.borderContainer, styles.color2)}>
                 <div style={styles.borderContainer}>
                   <h5 style={styles.columnhead}>ProposedSolution</h5>
                   {records.ProposedSolution}
@@ -45,11 +78,11 @@ export default function ViewPlan({ records }) {
                   {records.ExistingAlternatives}
                 </div>
               </div>
-              <div style={styles.borderContainer}>
+              <div style={(styles.borderContainer, styles.color3)}>
                 <h5 style={styles.columnhead}>UniqueValue</h5>
                 {records.UniqueValue}
               </div>
-              <div style={styles.borderContainer}>
+              <div style={(styles.borderContainer, styles.color4)}>
                 <div style={styles.borderContainer}>
                   <h5 style={styles.columnhead}>EarlyAdaptors</h5>
                   {records.EarlyAdaptors}
@@ -59,23 +92,31 @@ export default function ViewPlan({ records }) {
                   {records.WebMatrix}
                 </div>
               </div>
-              <div style={styles.borderContainer}>
+              <div style={(styles.borderContainer, styles.color5)}>
                 <h5 style={styles.columnhead}>TargetSegment</h5>
                 {records.TargetSegment}
               </div>
             </div>
-            <div style={{ display: 'flex' }}>
-              <div style={styles.borderContainer}>
+            <div style={{ display: 'flex', width: '100%' }}>
+              <div
+                style={
+                  (styles.borderContainer, styles.color4, { width: '100%' })
+                }
+              >
                 <h5 style={styles.columnhead}>CostMetrix</h5>
                 {records.CostMetrix}
               </div>
-              <div style={styles.borderContainer}>
+              <div
+                style={
+                  ((styles.borderContainer, styles.color5), { width: '100%' })
+                }
+              >
                 <h5 style={styles.columnhead}>Revenue</h5>
                 {records.Revenue}
               </div>
             </div>
           </div>
-        </>
+        </div>
       ) : null}
 
       {/* <table class="table table-dark">
