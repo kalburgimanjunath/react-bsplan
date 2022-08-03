@@ -7,6 +7,7 @@ import Revenue from './Revenue';
 import TargetSegment from './TargetSegment';
 import UniqueValue from './UniqueValue';
 import WebMatrix from './WebMatrix';
+import ListBPlans from './ListBPlans';
 export {
   ProblemStatement,
   ProposedSolution,
@@ -17,4 +18,5 @@ export {
   TargetSegment,
   UniqueValue,
   WebMatrix,
+  ListBPlans,
 };

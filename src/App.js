@@ -1,19 +1,21 @@
 import React, { useState, useRef, useEffect } from 'react';
 import './style.css';
-import {
-  ProblemStatement,
-  ProposedSolution,
-  ExistingAlternatives,
-  EarlyAdaptors,
-  CostMetrix,
-  Revenue,
-  TargetSegment,
-  UniqueValue,
-  WebMatrix,
-} from './components/index';
+import { Routes, Route } from 'react-router-dom';
+import Home from './pages/Home';
+import AddPlan from './pages/AddPlan';
 export default function App() {
   const [records, setRecords] = useState();
-
+  const empty = {
+    CostMetrix: ' ',
+    EarlyAdaptors: ' ',
+    ExistingAlternatives: ' ',
+    ProblemStatement: ' ',
+    ProposedSolution: ' ',
+    Revenue: ' ',
+    TargetSegment: ' ',
+    UniqueValue: ' ',
+    WebMatrix: ' ',
+  };
   useEffect(() => {
     fetch(
       'https://api.airtable.com/v0/appE590l4XAEEfNUQ/PlanTable?api_key=keyeNXyxxuuYJY19w'
@@ -32,61 +34,24 @@ export default function App() {
           WebMatrix: response.records[0].fields.WebMatrix,
         };
         setRecords(user);
-        console.log(user);
       });
   }, [records]);
 
   return (
     <div className="container">
-      <div className="main">
-        <ol>
-          <li>
-            {records && records.ProblemStatement ? (
-              <ProblemStatement ProblemStatement={records.ProblemStatement} />
-            ) : (
-              <div>Loading...</div>
-            )}
-          </li>
-          <li>
-            {records && records.ProposedSolution ? (
-              <ProposedSolution ProposedSolution={records.ProposedSolution} />
-            ) : (
-              <div>Loading...</div>
-            )}
-          </li>
-          <li>
-            {records && records.ExistingAlternatives ? (
-              <ExistingAlternatives
-                ExistingAlternatives={records.ExistingAlternatives}
-              />
-            ) : (
-              <div>Loading...</div>
-            )}
-          </li>
-
-          <li>
-            <UniqueValue />
-          </li>
-          <li>
-            <EarlyAdaptors />
-          </li>
-          <li>
-            <WebMatrix />
-          </li>
-          <li>
-            <TargetSegment />
-          </li>
-          <li>
-            <CostMetrix />
-          </li>
-          <li>
-            <Revenue />
-          </li>
-        </ol>
-        <button type="submit" className="btn btn-primary">
-          Submit
-        </button>
-      </div>
+      <Routes>
+        <Route
+          path="./addplan"
+          element={<AddPlan records={empty} />}
+          exact
+        ></Route>
+        <Route path="/*" element={<Home records={records} />} exact></Route>
+        <Route
+          path="/editplan"
+          element={<AddPlan records={records} />}
+          exact
+        ></Route>
+      </Routes>
     </div>
   );
 }
