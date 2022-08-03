@@ -3,6 +3,7 @@ import './style.css';
 import { Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import AddPlan from './pages/AddPlan';
+import ViewPlan from './pages/ViewPlan';
 export default function App() {
   const [records, setRecords] = useState();
   const empty = {
@@ -49,6 +50,11 @@ export default function App() {
         <Route
           path="/editplan"
           element={<AddPlan records={records} />}
+          exact
+        ></Route>
+        <Route
+          path="/viewplan"
+          element={<ViewPlan records={records} />}
           exact
         ></Route>
       </Routes>

@@ -5,8 +5,8 @@ export default function ListBPlans({ records }) {
     <div>
       <h1>My Business Plans</h1>
       <Link to="./addplan">Add New Business Plan</Link>
-      <table class="table table-dark">
-        <thead class="thead-dark">
+      <table className="table table-dark">
+        <thead className="thead-dark">
           <tr>
             <th scope="col">#</th>
             <th scope="col">ProblemStatement</th>
@@ -36,6 +36,9 @@ export default function ListBPlans({ records }) {
               <td>{records.WebMatrix}</td>
               <td>
                 <Link to="./editplan">Edit</Link>
+              </td>
+              <td>
+                <Link to="./viewplan">View</Link>
               </td>
             </tr>
           ) : (
