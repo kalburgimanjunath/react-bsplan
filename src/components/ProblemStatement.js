@@ -1,19 +1,37 @@
 import React, { useEffect, useState } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
+import axios from 'axios';
+
 const postData = async (ProblemStatement) => {
   let headers = new Headers();
   headers.append('Authorization', 'Bearer keyeNXyxxuuYJY19w');
   headers.append('Content-Type', 'application/json');
-  let res = await fetch(
-    'https://api.airtable.com/v0/appE590l4XAEEfNUQ/PlanTable',
-    {
-      method: 'POST',
-      headers: headers,
-      body: JSON.stringify({
-        ProblemStatement: ProblemStatement,
-      }),
-    }
-  );
+  // let res = await fetch(
+  //   'https://api.airtable.com/v0/appE590l4XAEEfNUQ/PlanTable',
+  //   {
+  //     method: 'POST',
+  //     headers: headers,
+  //     body: JSON.stringify({
+  //       ProblemStatement: ProblemStatement,
+  //     }),
+  //   }
+  // );
+  axios
+    .post(
+      'https://api.airtable.com/v0/appE590l4XAEEfNUQ/PlanTable',
+      {
+        fields: {
+          ProblemStatement: ProblemStatement,
+        },
+      },
+      { headers: headers }
+    )
+    .then((resp) => {
+      console.log('success!');
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
 };
 export default function ProblemStatement({ ProblemStatement }) {
   return (
